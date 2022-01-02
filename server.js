@@ -5,8 +5,6 @@ const express = require('express');
 
 const isTest = process.env.NODE_ENV === 'test' || !!process.env.VITE_TEST_BUILD;
 
-process.env.MY_CUSTOM_SECRET = 'API_KEY_qwertyuiop';
-
 async function createServer(
   root = process.cwd(),
   isProd = process.env.NODE_ENV === 'production'

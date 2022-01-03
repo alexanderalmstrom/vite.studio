@@ -16,7 +16,4 @@ steps:
   - --trigger-http
   - --runtime=nodejs16
   - --allow-unauthenticated
-artifacts:
-  objects:
-    location: 'gs://vite-studio/'
-    paths: ['dist']
+  

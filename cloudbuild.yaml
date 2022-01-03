@@ -1,4 +1,10 @@
 steps:
+- name: node
+  entrypoint: pnpm
+  args: ['install']
+- name: node
+  entrypoint: pnpm
+  args: ['build']
 - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
   args:
   - gcloud

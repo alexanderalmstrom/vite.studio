@@ -1,11 +1,12 @@
 {
   "name": "vite.studio",
   "version": "0.0.1",
-  "main": "dist/server/index.js",
+  "main": "./dist/server/gfc.js",
   "scripts": {
-    "dev": "NODE_ENV=development ts-node-dev src/server",
-    "start": "node dist/server",
+    "dev": "NODE_ENV=development ts-node-dev src/server/server",
+    "start": "node dist/server/server",
     "build": "run-s clean build:server build:entry:client build:entry:server",
+    "deploy": "gcloud functions deploy vite-studio --project steel-mantra-336800 --entry-point ./dist/server/gfc.js",
     "clean": "rimraf dist",
     "build:server": "tsc --project tsconfig.build.server.json",
     "build:entry:client": "vite build --outDir dist/entry/client",

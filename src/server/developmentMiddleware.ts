@@ -8,18 +8,20 @@ export async function developmentMiddleware(application: express.Application) {
     const url = req.originalUrl;
 
     const vite = await createServer({
-      server: { middlewareMode: 'ssr' },
+      server: {
+        middlewareMode: 'ssr',
+      },
     });
 
     application.use(vite.middlewares);
 
     try {
-      let template = fs.readFileSync(
-        path.resolve(__dirname, '..', 'index.html'),
-        'utf-8'
+      const template = await vite.transformIndexHtml(
+        url,
+        fs.readFileSync(path.resolve(process.cwd(), 'index.html'), 'utf-8')
       );
 
-      const { render } = await vite.ssrLoadModule('../src/entry/server.tsx');
+      const { render } = await vite.ssrLoadModule('./src/entry/server.tsx');
 
       const appHtml = await render(url);
 

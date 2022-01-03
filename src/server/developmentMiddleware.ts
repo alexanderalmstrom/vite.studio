@@ -4,16 +4,16 @@ import express from 'express';
 import { createServer } from 'vite';
 
 export async function developmentMiddleware(application: express.Application) {
+  const vite = await createServer({
+    server: {
+      middlewareMode: 'ssr',
+    },
+  });
+
+  application.use(vite.middlewares);
+
   application.use('*', async (req: any, res: any) => {
     const url = req.originalUrl;
-
-    const vite = await createServer({
-      server: {
-        middlewareMode: 'ssr',
-      },
-    });
-
-    application.use(vite.middlewares);
 
     try {
       const template = await vite.transformIndexHtml(

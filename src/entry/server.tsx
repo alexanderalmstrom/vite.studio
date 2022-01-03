@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
-import App from '../application/App';
 import { HelmetProvider } from 'react-helmet-async';
+import App from '../application/App';
 
 export function render(url: string) {
   return ReactDOMServer.renderToString(

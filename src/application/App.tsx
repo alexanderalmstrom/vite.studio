@@ -1,12 +1,9 @@
-import React from 'react';
-
-import './static/index.scss';
-import styles from './App.module.scss';
+import './css/index.scss';
 
 export default function App() {
   return (
-    <div className={styles.root}>
-      <h1>hello</h1>
-    </div>
+    <>
+      <h1>yo</h1>
+    </>
   );
 }

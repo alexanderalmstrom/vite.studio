@@ -4,11 +4,14 @@ import express from 'express';
 import compression from 'compression';
 import serveStatic from 'serve-static';
 
-export async function productionMiddleware(application: express.Application) {
+export async function productionMiddleware(
+  root: string,
+  application: express.Application
+) {
   application.use(compression());
 
   application.use(
-    serveStatic(path.resolve(process.cwd(), 'dist', 'entry', 'client'), {
+    serveStatic(path.resolve(root, 'dist', 'entry', 'client'), {
       index: false,
     })
   );
@@ -18,12 +21,12 @@ export async function productionMiddleware(application: express.Application) {
 
     try {
       const template = fs.readFileSync(
-        path.resolve(process.cwd(), 'dist', 'entry', 'client', 'index.html'),
+        path.resolve(root, 'dist', 'entry', 'client', 'index.html'),
         'utf-8'
       );
 
       const { render } = require(path.resolve(
-        process.cwd(),
+        root,
         'dist',
         'entry',
         'server',
@@ -35,14 +38,10 @@ export async function productionMiddleware(application: express.Application) {
       const html = template.replace(`<!--ssr-outlet-->`, appHtml);
 
       res.status(200).set({ 'Content-Type': 'text/html' }).end(html);
-    } catch (error) {
-      let message = error;
-
+    } catch ({ message, ...error }) {
       if (error instanceof Error) {
-        message = error.message;
+        console.error(error);
       }
-
-      console.error(error);
 
       res.status(500).end(message);
     }

@@ -6,7 +6,7 @@
     "dev": "NODE_ENV=development ts-node-dev src/server/server.ts",
     "start": "node dist/server/server.js",
     "build": "run-s clean build:server build:entry:client build:entry:server",
-    "deploy": "gcloud functions deploy vite --project steel-mantra-336800 --entry-point vite --runtime nodejs16 --trigger-http --allow-unauthenticated",
+    "deploy": "gcloud functions deploy vite --project steel-mantra-336800 --source=. --runtime nodejs16 --trigger-http --allow-unauthenticated",
     "clean": "rimraf dist",
     "build:server": "tsc --project tsconfig.build.server.json",
     "build:entry:client": "vite build --outDir dist/entry/client",

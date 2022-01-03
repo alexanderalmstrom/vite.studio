@@ -11,12 +11,12 @@ steps:
   - functions
   - deploy
   - vite
-  - --entry-point=vite
   - --region=us-central1
+  - --source=.
   - --trigger-http
   - --runtime=nodejs16
   - --allow-unauthenticated
 artifacts:
   objects:
-    location: 'gs://[STORAGE_LOCATION]/'
+    location: 'gs://vite-studio/'
     paths: ['dist']

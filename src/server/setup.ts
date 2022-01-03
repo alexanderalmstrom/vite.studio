@@ -1,6 +1,6 @@
 import express from 'express';
-import { developmentMiddleware } from './developmentMiddleware';
-import { productionMiddleware } from './productionMiddleware';
+import { developmentMiddleware } from './middleware/development';
+import { productionMiddleware } from './middleware/production';
 
 export async function setup(
   root: string,

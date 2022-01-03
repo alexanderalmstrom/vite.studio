@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import express from 'express';
 import { createServer } from 'vite';
-import { replaceHtml } from './replaceHtml';
+import { replaceHtml } from '../utils/replaceHtml';
 
 export async function developmentMiddleware(
   root: string,

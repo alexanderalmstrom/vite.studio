@@ -3,7 +3,7 @@ import path from 'path';
 import express from 'express';
 import compression from 'compression';
 import serveStatic from 'serve-static';
-import { replaceHtml } from './replaceHtml';
+import { replaceHtml } from '../utils/replaceHtml';
 
 export async function productionMiddleware(
   root: string,

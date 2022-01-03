@@ -9,7 +9,7 @@
     "build:server": "tsc --project tsconfig.build.server.json",
     "build:entry:client": "vite build --outDir dist/entry/client",
     "build:entry:server": "vite build --outDir dist/entry/server --ssr src/entry/server.tsx",
-    "start": "node dist/server/server.js",
+    "start": "node dist/server/server",
     "format": "prettier **/*.{ts,tsx,scss} --write"
   },
   "dependencies": {

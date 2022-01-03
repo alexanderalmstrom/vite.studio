@@ -2,6 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import express from 'express';
 import { createServer } from 'vite';
+import { replaceHtml } from './replaceHtml';
 
 export async function developmentMiddleware(
   root: string,
@@ -15,7 +16,7 @@ export async function developmentMiddleware(
 
   application.use(vite.middlewares);
 
-  application.use('*', async (req: any, res: any) => {
+  application.use('*', async (req: express.Request, res: express.Response) => {
     const url = req.originalUrl;
 
     try {
@@ -26,9 +27,7 @@ export async function developmentMiddleware(
 
       const { render } = await vite.ssrLoadModule('./src/entry/server.tsx');
 
-      const appHtml = await render(url);
-
-      const html = template.replace(`<!--ssr-outlet-->`, appHtml);
+      const html = await replaceHtml({ url, template, render });
 
       res.status(200).set({ 'Content-Type': 'text/html' }).end(html);
     } catch ({ message, ...error }) {

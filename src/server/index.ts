@@ -17,12 +17,20 @@ async function server(
   return application;
 }
 
-server(process.cwd(), express(), developmentMode)
-  .then((application: express.Application) => {
-    application.listen(port, () => {
-      console.log(`Listening on http://localhost:${port}`);
-    });
-  })
-  .catch((error) => {
-    throw new Error(error);
-  });
+async function init() {
+  try {
+    const application = await server(process.cwd(), express(), developmentMode);
+
+    application.listen(port, () =>
+      console.log(`Listening on http://localhost:${port}`)
+    );
+  } catch (error) {
+    if (error instanceof Error) {
+      console.error(error);
+    } else {
+      throw error;
+    }
+  }
+}
+
+init();

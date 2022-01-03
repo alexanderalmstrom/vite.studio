@@ -2,7 +2,6 @@
   "extends": "./tsconfig.json",
   "include": ["./src/server"],
   "compilerOptions": {
-    // This lets us emit custom files bypassing vite build, for the express handler
     "noEmit": false,
     "outDir": "./dist/server"
   }

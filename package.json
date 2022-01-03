@@ -4,12 +4,12 @@
   "main": "dist/server/server.js",
   "scripts": {
     "dev": "NODE_ENV=development ts-node-dev src/server",
+    "start": "node dist/server",
     "build": "run-s clean build:server build:entry:client build:entry:server",
     "clean": "rimraf dist",
     "build:server": "tsc --project tsconfig.build.server.json",
     "build:entry:client": "vite build --outDir dist/entry/client",
     "build:entry:server": "vite build --outDir dist/entry/server --ssr src/entry/server.tsx",
-    "start": "node dist/server",
     "format": "prettier **/*.{ts,tsx,scss} --write"
   },
   "dependencies": {

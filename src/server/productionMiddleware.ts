@@ -1,23 +1,34 @@
 import fs from 'fs';
 import path from 'path';
 import express from 'express';
+import compression from 'compression';
+import serveStatic from 'serve-static';
 
-export async function productionMiddleware(
-  root: string,
-  app: express.Application
-) {
-  app.use('*', async (req: any, res: any) => {
+export async function productionMiddleware(application: express.Application) {
+  application.use(compression());
+
+  application.use(
+    serveStatic(path.resolve(__dirname, '..', 'entry', 'client'), {
+      index: false,
+    })
+  );
+
+  application.use('*', async (req: any, res: any) => {
     const url = req.originalUrl;
 
     try {
       let template = fs.readFileSync(
-        path.resolve(root, 'dist/client/index.html'),
+        path.resolve(__dirname, '..', 'entry', 'client', 'index.html'),
         'utf-8'
       );
 
-      const { render } = await import(
-        path.resolve(root, 'dist/server/server.js')
-      );
+      const { render } = require(path.resolve(
+        __dirname,
+        '..',
+        'entry',
+        'server',
+        'server.js'
+      ));
 
       const appHtml = await render(url);
 
@@ -37,5 +48,5 @@ export async function productionMiddleware(
     }
   });
 
-  return app;
+  return application;
 }

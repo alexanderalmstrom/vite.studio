@@ -1,10 +1,12 @@
 import express from 'express';
 import { setup } from './setup';
 
-setup(process.cwd(), express(), process.env.NODE_ENV === 'production')
-  .then((app) => {
-    app.listen(3000, () => {
-      console.log('Listening on http://localhost:3000');
+const port = process.env.PORT || 3000;
+
+setup(express(), process.env.NODE_ENV === 'development')
+  .then((application) => {
+    application.listen(port, () => {
+      console.log(`Listening on http://localhost:${port}`);
     });
   })
   .catch((error) => {

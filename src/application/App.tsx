@@ -1,5 +1,5 @@
-import './App.scss';
+import './App.css';
 
-export default function App() {
+export function App() {
   return <div className="app">Hello from App!</div>;
 }

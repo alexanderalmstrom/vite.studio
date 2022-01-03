@@ -3,25 +3,23 @@ import path from 'path';
 import express from 'express';
 import { createServer } from 'vite';
 
-export async function developmentMiddleware(
-  root: string,
-  app: express.Application
-) {
-  app.use('*', async (req: any, res: any) => {
+export async function developmentMiddleware(application: express.Application) {
+  application.use('*', async (req: any, res: any) => {
     const url = req.originalUrl;
 
     const vite = await createServer({
       server: { middlewareMode: 'ssr' },
     });
 
-    app.use(vite.middlewares);
+    application.use(vite.middlewares);
 
     try {
-      let template = fs.readFileSync(path.resolve(root, 'index.html'), 'utf-8');
-
-      const { render } = await vite.ssrLoadModule(
-        path.resolve(root, 'src/entry/server.tsx')
+      let template = fs.readFileSync(
+        path.resolve(__dirname, '..', 'index.html'),
+        'utf-8'
       );
+
+      const { render } = await vite.ssrLoadModule('../src/entry/server.tsx');
 
       const appHtml = await render(url);
 
@@ -43,5 +41,5 @@ export async function developmentMiddleware(
     }
   });
 
-  return app;
+  return application;
 }

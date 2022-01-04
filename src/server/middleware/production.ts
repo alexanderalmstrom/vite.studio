@@ -1,11 +1,18 @@
 import fs from 'fs';
 import path from 'path';
 import express from 'express';
+import cors from 'cors';
 import compression from 'compression';
 import serveStatic from 'serve-static';
 import { replaceHtml } from '../utils/replaceHtml';
 
 export async function productionMiddleware(application: express.Application) {
+  application.use(
+    cors({
+      origin: true,
+    })
+  );
+
   application.use(compression());
 
   application.use(

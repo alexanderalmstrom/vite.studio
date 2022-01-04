@@ -1,9 +1,7 @@
 steps:
-- name: node
-  entrypoint: npm
+- name: 'gcr.io/cloud-builders/npm'
   args: ['install']
-- name: node
-  entrypoint: npm
+- name: 'gcr.io/cloud-builders/npm'
   args: ['run', 'build']
 - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
   args:
@@ -11,9 +9,9 @@ steps:
   - functions
   - deploy
   - vite
-  - --region=us-central1
   - --source=.
-  - --trigger-http
+  - --region=us-central1
   - --runtime=nodejs16
+  - --trigger-http
   - --allow-unauthenticated
   

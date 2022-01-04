@@ -15,4 +15,14 @@ steps:
   - --runtime=nodejs16
   - --trigger-http
   - --allow-unauthenticated
+- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  args:
+  - gcloud
+  - functions
+  - deploy
+  - helloWorld
+  - --region=us-central1
+  - --runtime=nodejs16
+  - --trigger-http
+  - --allow-unauthenticated
   

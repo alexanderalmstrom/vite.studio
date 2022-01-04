@@ -1,7 +1,9 @@
 steps:
 - name: 'gcr.io/cloud-builders/npm'
+  entrypoint: 'node'
   args: ['install']
 - name: 'gcr.io/cloud-builders/npm'
+  entrypoint: 'node'
   args: ['run', 'build']
 - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
   args:

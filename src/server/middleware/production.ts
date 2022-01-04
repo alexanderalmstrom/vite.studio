@@ -9,7 +9,7 @@ export async function productionMiddleware(application: express.Application) {
   application.use(compression());
 
   application.use(
-    serveStatic(path.resolve(process.cwd(), 'dist', 'entry', 'client'), {
+    serveStatic(path.resolve(__dirname, '..', '..', 'entry', 'client'), {
       index: false,
     })
   );
@@ -19,13 +19,14 @@ export async function productionMiddleware(application: express.Application) {
 
     try {
       const template = fs.readFileSync(
-        path.resolve(process.cwd(), 'dist', 'entry', 'client', 'index.html'),
+        path.resolve(__dirname, '..', '..', 'entry', 'client', 'index.html'),
         'utf-8'
       );
 
       const { render } = require(path.resolve(
-        process.cwd(),
-        'dist',
+        __dirname,
+        '..',
+        '..',
         'entry',
         'server',
         'server.js'

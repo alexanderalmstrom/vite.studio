@@ -4,7 +4,7 @@ import { productionMiddleware } from './middleware/production';
 
 export async function setup(
   application: express.Application,
-  developmentMode?: boolean
+  developmentMode: boolean = false
 ) {
   developmentMode
     ? await developmentMiddleware(application)

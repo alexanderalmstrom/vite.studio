@@ -1,14 +1,4 @@
 .gcloudignore
 .git
 .gitignore
-.prettierignore
-.prettierrc.json
-.vscode
 node_modules
-src
-package.json
-pnpm-lock.yaml
-README.md
-tsconfig.*
-vite.config.ts
-index.html

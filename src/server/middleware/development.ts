@@ -6,9 +6,7 @@ import { replaceHtml } from '../utils/replaceHtml';
 
 export async function developmentMiddleware(application: express.Application) {
   const vite = await createServer({
-    server: {
-      middlewareMode: 'ssr',
-    },
+    server: { middlewareMode: 'ssr' },
   });
 
   application.use(vite.middlewares);
@@ -19,7 +17,10 @@ export async function developmentMiddleware(application: express.Application) {
     try {
       const template = await vite.transformIndexHtml(
         url,
-        fs.readFileSync(path.resolve(process.cwd(), 'index.html'), 'utf-8')
+        fs.readFileSync(
+          path.resolve(__dirname, '..', '..', '..', 'index.html'),
+          'utf-8'
+        )
       );
 
       const { render } = await vite.ssrLoadModule('./src/entry/server.tsx');

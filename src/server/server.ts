@@ -6,7 +6,7 @@ const developmentMode = process.env.NODE_ENV === 'development';
 
 async function server() {
   try {
-    const application = await setup(process.cwd(), express(), developmentMode);
+    const application = await setup(express(), developmentMode);
 
     application.listen(port, () =>
       console.log(`Listening on http://localhost:${port}`)

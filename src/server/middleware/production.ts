@@ -5,14 +5,11 @@ import compression from 'compression';
 import serveStatic from 'serve-static';
 import { replaceHtml } from '../utils/replaceHtml';
 
-export async function productionMiddleware(
-  root: string,
-  application: express.Application
-) {
+export async function productionMiddleware(application: express.Application) {
   application.use(compression());
 
   application.use(
-    serveStatic(path.resolve(root, 'dist', 'entry', 'client'), {
+    serveStatic(path.resolve(process.cwd(), 'dist', 'entry', 'client'), {
       index: false,
     })
   );
@@ -22,12 +19,12 @@ export async function productionMiddleware(
 
     try {
       const template = fs.readFileSync(
-        path.resolve(root, 'dist', 'entry', 'client', 'index.html'),
+        path.resolve(process.cwd(), 'dist', 'entry', 'client', 'index.html'),
         'utf-8'
       );
 
       const { render } = require(path.resolve(
-        root,
+        process.cwd(),
         'dist',
         'entry',
         'server',

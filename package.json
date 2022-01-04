@@ -1,7 +1,7 @@
 {
   "name": "vite.studio",
   "version": "0.0.1",
-  "main": "dist/server/gfc.js",
+  "main": "dist/server/vite.js",
   "scripts": {
     "dev": "NODE_ENV=development ts-node-dev src/server/server.ts",
     "start": "node dist/server/server.js",

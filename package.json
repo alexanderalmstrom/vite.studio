@@ -1,16 +1,16 @@
 {
   "name": "vite.studio",
   "version": "0.0.1",
-  "main": "dist/server/vite.js",
+  "main": "dist/functions/index.js",
   "scripts": {
     "dev": "NODE_ENV=development ts-node-dev src/server/server.ts",
     "start": "node dist/server/server.js",
     "start:functions": "functions-framework --target=vite",
     "watch:functions": "concurrently \"tsc -w\" \"nodemon --watch ./dist/ --exec pnpm start:functions\"",
-    "build": "run-s clean build:server build:entry:client build:entry:server",
-    "deploy": "gcloud functions deploy vite --source=. --runtime=nodejs16 --verbosity=debug --trigger-http --allow-unauthenticated",
+    "build": "run-s clean build:ts build:entry:client build:entry:server",
+    "deploy": "gcloud functions deploy helloWorld --region=us-central1 --runtime=nodejs16 --verbosity=debug --trigger-http --allow-unauthenticated",
     "clean": "rimraf dist",
-    "build:server": "tsc --project tsconfig.build.server.json",
+    "build:ts": "tsc --project tsconfig.build.json",
     "build:entry:client": "vite build --outDir dist/entry/client",
     "build:entry:server": "vite build --outDir dist/entry/server --ssr src/entry/server.tsx",
     "format": "prettier **/*.{ts,tsx,scss} --write"

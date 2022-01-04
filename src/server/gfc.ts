@@ -1,8 +1,10 @@
 import express from 'express';
 import { setup } from './setup';
 
-const vite = express();
+const vite = async () => {
+  const application = express();
 
-setup(process.cwd(), vite, false);
+  await setup(process.cwd(), application, false);
+};
 
 export { vite };

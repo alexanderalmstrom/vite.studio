@@ -12,10 +12,10 @@
     "deploy:vite": "gcloud functions deploy vite --region=us-central1 --runtime=nodejs16 --verbosity=debug --trigger-http --allow-unauthenticated",
     "deploy:helloWorld": "gcloud functions deploy helloWorld --region=us-central1 --runtime=nodejs16 --verbosity=debug --trigger-http --allow-unauthenticated",
     "clean": "rimraf dist",
-    "build": "run-s clean build:ts build:entry:client build:entry:server",
+    "build": "run-s clean build:ts build:lib:client build:lib:server",
     "build:ts": "tsc --project tsconfig.build.json",
-    "build:entry:client": "vite build --outDir dist/entry/client",
-    "build:entry:server": "vite build --outDir dist/entry/server --ssr src/entry/server.tsx",
+    "build:lib:client": "vite build --outDir dist/public",
+    "build:lib:server": "vite build --outDir dist/lib --ssr src/lib/server.tsx",
     "format": "prettier **/*.{ts,tsx,scss} --write"
   },
   "dependencies": {

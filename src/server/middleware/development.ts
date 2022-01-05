@@ -23,7 +23,7 @@ export async function developmentMiddleware(application: express.Application) {
         )
       );
 
-      const { render } = await vite.ssrLoadModule('./src/entry/server.tsx');
+      const { render } = await vite.ssrLoadModule('./src/lib/server.tsx');
 
       const html = await replaceHtml({ url, template, render });
 

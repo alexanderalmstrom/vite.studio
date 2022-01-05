@@ -1,22 +1,24 @@
 import fs from 'fs';
 import path from 'path';
 import express from 'express';
-import cors from 'cors';
+// import cors from 'cors';
 import compression from 'compression';
 import serveStatic from 'serve-static';
 import { replaceHtml } from '../utils/replaceHtml';
 
 export async function productionMiddleware(application: express.Application) {
-  application.use(
-    cors({
-      origin: true,
-    })
-  );
+  // application.use(
+  //   cors({
+  //     origin: 'http://127.0.0.1:8080',
+  //     credentials: true,
+  //     methods: ['GET', 'POST'],
+  //   })
+  // );
 
   application.use(compression());
 
   application.use(
-    serveStatic(path.resolve(__dirname, '..', '..', 'entry', 'client'), {
+    serveStatic(path.resolve(__dirname, '..', '..', 'public'), {
       index: false,
     })
   );
@@ -26,7 +28,7 @@ export async function productionMiddleware(application: express.Application) {
 
     try {
       const template = fs.readFileSync(
-        path.resolve(__dirname, '..', '..', 'entry', 'client', 'index.html'),
+        path.resolve(__dirname, '..', '..', 'public', 'index.html'),
         'utf-8'
       );
 
@@ -34,8 +36,7 @@ export async function productionMiddleware(application: express.Application) {
         __dirname,
         '..',
         '..',
-        'entry',
-        'server',
+        'lib',
         'server.js'
       ));
 

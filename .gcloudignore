@@ -1,5 +1,13 @@
+.vscode
+.github
+.firebase
 .gcloudignore
 .git
 .gitignore
-node_modules
-.firebase
+.prettierignore
+.prettierrc.json
+.firebase.json
+README.md
+pnpm-lock.yaml
+/node_modules
+/src

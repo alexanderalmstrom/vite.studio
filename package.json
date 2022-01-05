@@ -1,6 +1,10 @@
 {
   "name": "vite.studio",
   "version": "0.0.1",
+  "private": true,
+  "engines": {
+    "node": "16"
+  },
   "main": "dist/functions/index.js",
   "scripts": {
     "dev": "NODE_ENV=development ts-node-dev src/server/server.ts",

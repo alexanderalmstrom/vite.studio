@@ -1,28 +1,32 @@
 steps:
-- name: node
-  entrypoint: npm
-  args: ['install']
-- name: node
-  entrypoint: npm
-  args: ['run', 'build']
-- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-  args:
-  - gcloud
-  - functions
-  - deploy
-  - vite
-  - --region=us-central1
-  - --runtime=nodejs16
-  - --trigger-http
-  - --allow-unauthenticated
-- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-  args:
-  - gcloud
-  - functions
-  - deploy
-  - helloWorld
-  - --region=us-central1
-  - --runtime=nodejs16
-  - --trigger-http
-  - --allow-unauthenticated
-  
+  - name: gcr.io/cloud-builders/docker
+    args:
+      - build
+      - '--no-cache'
+      - '-t'
+      - 'gcr.io/steel-mantra-336800/github.com/alexanderalmstrom/vite.studio/vite-studio:$COMMIT_SHA'
+      - .
+      - '-f'
+      - Dockerfile
+    id: Build
+  - name: gcr.io/cloud-builders/docker
+    args:
+      - push
+      - 'gcr.io/steel-mantra-336800/github.com/alexanderalmstrom/vite.studio/vite-studio:$COMMIT_SHA'
+    id: Push
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:slim'
+    args:
+      - run
+      - services
+      - update
+      - vite-studio
+      - '--platform=managed'
+      - '--image=gcr.io/steel-mantra-336800/github.com/alexanderalmstrom/vite.studio/vite-studio:$COMMIT_SHA'
+      - >-
+        --labels=managed-by=gcp-cloud-build-deploy-cloud-run,commit-sha=$COMMIT_SHA,gcb-build-id=$BUILD_ID,gcb-trigger-id=$_TRIGGER_ID,$_LABELS
+      - '--region=$_DEPLOY_REGION'
+      - '--quiet'
+    id: Deploy
+    entrypoint: gcloud
+images:
+  - 'gcr.io/steel-mantra-336800/github.com/alexanderalmstrom/vite.studio/vite-studio:$COMMIT_SHA'

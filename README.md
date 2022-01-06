@@ -30,5 +30,3 @@ pnpm build
 ```bash
 pnpm start
 ```
-
-test

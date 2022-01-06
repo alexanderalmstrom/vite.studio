@@ -15,7 +15,7 @@
     "build:typescript": "tsc --project tsconfig.build.json",
     "build:site": "vite build --outDir dist/public",
     "build:app": "vite build --outDir dist/app --ssr src/app/render.tsx",
-    "deploy:functions": "gcloud functions deploy vite-studio --region=us-central1 --runtime=nodejs16 --trigger-http",
+    "deploy:functions": "gcloud functions deploy vite-studio --entry-point=vite --region=us-central1 --runtime=nodejs16 --trigger-http --allow-unauthenticated",
     "deploy:tag": "gcloud builds submit --tag gcr.io/steel-mantra-336800/vite-studio",
     "deploy:image": "gcloud run deploy vite-studio --image gcr.io/steel-mantra-336800/vite-studio --region=us-central1",
     "deploy:cloud-run": "run-s build deploy:tag deploy:image",

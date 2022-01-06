@@ -1,3 +1,5 @@
+import './css/main.scss';
+
 export default function App() {
   return (
     <>

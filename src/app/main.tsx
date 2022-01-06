@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { HelmetProvider } from 'react-helmet-async';
-import App from '../application/App';
+import App from './App';
 
 ReactDOM.hydrate(
   <React.StrictMode>
@@ -9,5 +9,5 @@ ReactDOM.hydrate(
       <App />
     </HelmetProvider>
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById('app')
 );

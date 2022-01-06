@@ -27,8 +27,8 @@ export async function productionMiddleware(application: express.Application) {
         __dirname,
         '..',
         '..',
-        'lib',
-        'server.js'
+        'app',
+        'render.js'
       ));
 
       const html = await replaceHtml({ url, template, render });

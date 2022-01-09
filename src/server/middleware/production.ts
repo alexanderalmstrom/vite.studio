@@ -5,18 +5,12 @@ import compression from 'compression';
 import serveStatic from 'serve-static';
 import { replaceHtml } from '../utils/replaceHtml';
 
-function setCacheHeaders(res: express.Response, path: string) {
-  res.setHeader('Content-Encoding', 'gzip');
-}
-
 export async function productionMiddleware(application: express.Application) {
   application.use(compression());
 
   application.use(
     serveStatic(path.resolve(__dirname, '..', '..', 'public'), {
       index: false,
-      maxAge: '1d',
-      setHeaders: setCacheHeaders,
     })
   );
 

@@ -16,5 +16,12 @@
   },
   "[scss]": {
     "editor.formatOnSave": true
-  }
+  },
+  "files.associations": {
+    "*.scss": "postcss"
+  },
+  "editor.quickSuggestions": {
+    "strings": true
+  },
+  "tailwindCSS.emmetCompletions": true,
 }

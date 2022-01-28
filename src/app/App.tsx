@@ -1,18 +1,18 @@
 import React from 'react';
 import { HelmetProvider } from 'react-helmet-async';
-import Layout from './components/Layout';
-
+import { Routes, Route } from 'react-router-dom';
+import Home from './pages/Home';
+import About from './pages/About';
 import './App.scss';
 
 export default function App() {
   return (
     <React.StrictMode>
       <HelmetProvider>
-        <Layout>
-          <div className="app h-screen flex flex-col justify-center items-center">
-            <h1 className="text-4xl">vite.studio</h1>
-          </div>
-        </Layout>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+        </Routes>
       </HelmetProvider>
     </React.StrictMode>
   );

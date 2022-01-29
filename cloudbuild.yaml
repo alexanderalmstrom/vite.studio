@@ -1,5 +1,5 @@
 steps:
-  - name: node
+  - name: gcr.io/cloud-builders/npm:node-16.13.1
     entrypoint: npm
     args: ['install']
   - name: node

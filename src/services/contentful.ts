@@ -1,9 +1,9 @@
-import contentful from 'contentful';
+import { createClient } from 'contentful';
 
-const SPACE_ID = process.env.CONTENTFUL_SPACE_ID!;
-const ACCESS_TOKEN = process.env.CONTENTFUL_ACCESS_TOKEN!;
+const SPACE_ID = import.meta.env.VITE_CONTENTFUL_SPACE_ID as string;
+const ACCESS_TOKEN = import.meta.env.VITE_CONTENTFUL_ACCESS_TOKEN as string;
 
-export const client = contentful.createClient({
+export const contentful = createClient({
   space: SPACE_ID,
   accessToken: ACCESS_TOKEN,
 });

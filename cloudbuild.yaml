@@ -1,8 +1,8 @@
 steps:
-  - name: gcr.io/cloud-builders/npm:node-14.10.0
+  - name: node:lts
     entrypoint: npm
     args: ['install']
-  - name: gcr.io/cloud-builders/npm:node-14.10.0
+  - name: node:lts
     entrypoint: npm
     args: ['run', 'build']
   - name: gcr.io/cloud-builders/docker

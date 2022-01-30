@@ -1,11 +1,12 @@
 import { Sys, Metadata } from 'contentful';
 
-export type Page = {
-  fields: PageFields;
+export type ContentfulPage = {
+  fields: ContentfulPageFields;
   metadata: Metadata;
   sys: Sys;
 };
 
-export type PageFields = {
+export type ContentfulPageFields = {
   title: string;
+  slug: string;
 };

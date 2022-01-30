@@ -7,15 +7,15 @@ type Action = {
 };
 
 const initialState = {
-  pages: [],
+  page: {},
 };
 
-export function pages(state = initialState, action: Action) {
+export function page(state = initialState, action: Action) {
   switch (action.type) {
-    case 'FETCH_PAGES':
+    case 'FETCH_PAGE':
       return {
         ...state,
-        pages: action.payload,
+        page: action.payload.items[0],
       };
     default:
       return state;

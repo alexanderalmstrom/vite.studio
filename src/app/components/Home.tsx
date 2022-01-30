@@ -1,17 +1,18 @@
 import { ContentfulCollection } from 'contentful';
 import { useEffect } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { fetchPages } from '../actions';
-import { Page } from '../types';
+import { ContentfulPage } from '../types';
 import Layout from './Layout';
 
 type Props = {
-  pages?: ContentfulCollection<Page>;
+  pages?: ContentfulCollection<ContentfulPage>;
   fetchPages?: Function;
 };
 
 type State = {
-  pages?: ContentfulCollection<Page>;
+  pages?: ContentfulCollection<ContentfulPage>;
 };
 
 function Home({ fetchPages, pages }: Props) {
@@ -23,9 +24,10 @@ function Home({ fetchPages, pages }: Props) {
 
   return (
     <Layout className="h-screen flex flex-col justify-center items-center">
-      <h1 className="text-4xl">Pages</h1>
       {pages.items.map(({ sys, fields }) => (
-        <div key={sys.id}>{fields.title}</div>
+        <Link to={`/page/${fields.slug}`} key={sys.id}>
+          {fields.title}
+        </Link>
       ))}
     </Layout>
   );

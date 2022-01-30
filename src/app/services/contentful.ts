@@ -3,7 +3,7 @@ import { ContentfulClientApi, createClient } from 'contentful';
 let space;
 let accessToken;
 
-if (import.meta.env.SSR) {
+if (!import.meta.env.SSR) {
   space = (process.env.VITE_CONTENTFUL_SPACE_ID ||
     process.env.CONTENTFUL_SPACE_ID) as string;
   accessToken = (process.env.VITE_CONTENTFUL_ACCESS_TOKEN ||

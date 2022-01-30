@@ -1,10 +1,12 @@
 import { ContentfulCollection } from 'contentful';
-import { contentful } from '../services/contentful';
+import { contentfulClient } from '../services/contentful';
 import { Page } from '../types';
 
 export const fetchPages: Function = () => async (dispatch: Function) => {
   try {
-    const payload = await contentful.getEntries<ContentfulCollection<Page>>({
+    const payload = await contentfulClient.getEntries<
+      ContentfulCollection<Page>
+    >({
       content_type: 'page',
     });
 

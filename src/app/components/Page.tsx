@@ -16,7 +16,7 @@ type State = {
   page?: ContentfulPage;
 };
 
-function Page({ fetchPage, page, ...props }: Props) {
+function Page({ fetchPage, page }: Props) {
   const { slug } = useParams();
 
   useEffect(() => {

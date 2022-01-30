@@ -2,9 +2,9 @@
 # COPY dist/public /usr/share/nginx/public
 # COPY nginx/default.conf /etc/nginx/conf.d/default.conf
 
-# Use the official lightweight Node.js 12 image.
+# Use the official lightweight Node.js 16 image.
 # https://hub.docker.com/_/node
-FROM node:12-slim
+FROM node:16-slim
 
 # Create and change to the app directory.
 WORKDIR /usr/src/app

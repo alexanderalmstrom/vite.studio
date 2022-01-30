@@ -1,5 +1,8 @@
+import dotenv from 'dotenv';
 import express from 'express';
 import { setup } from './setup';
+
+dotenv.config();
 
 const port = process.env.PORT || 3000;
 const developmentMode = process.env.NODE_ENV === 'development';

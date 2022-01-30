@@ -1,6 +1,6 @@
 import { ContentfulCollection } from 'contentful';
-import { contentfulClient } from '../services/contentful';
 import { ContentfulPage } from '../types';
+import { contentfulClient } from '../services/contentful';
 
 export const fetchPages: Function = () => async (dispatch: Function) => {
   try {

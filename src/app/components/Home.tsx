@@ -11,7 +11,7 @@ type Props = {
 };
 
 type State = {
-  pages: Array<Page>;
+  pages: ContentfulCollection<Page>;
 };
 
 function Home({ fetchPages, pages }: Props) {

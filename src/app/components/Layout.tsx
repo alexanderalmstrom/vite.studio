@@ -1,12 +1,12 @@
 import React from 'react';
 import classNames from 'classnames';
 
-type LayoutProps = {
+type Props = {
   className?: string;
   children: React.ReactNode;
 };
 
-export default function Layout({ className, children }: LayoutProps) {
+export default function Layout({ className, children }: Props) {
   return (
     <main
       className={classNames(

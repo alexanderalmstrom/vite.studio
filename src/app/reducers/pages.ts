@@ -1,22 +1,13 @@
+import { ContentfulCollection } from 'contentful';
+import { Page } from '../types';
+
 const initialState = {
   pages: [],
 };
 
 type Action = {
-  payload: Payload;
+  payload: ContentfulCollection<Page>;
   type: string;
-};
-
-type Payload = {
-  data: Data;
-};
-
-type Data = {
-  items: Items;
-};
-
-type Items = {
-  items: Array<Object>;
 };
 
 export default function (state = initialState, action: Action) {

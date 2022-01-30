@@ -20,7 +20,8 @@
     "deploy:image": "gcloud run deploy vite-studio --image gcr.io/steel-mantra-336800/vite-studio --region=us-central1",
     "deploy:cloud-run": "run-s build deploy:tag deploy:image",
     "clean": "rimraf dist",
-    "format": "prettier **/*.{ts,tsx,scss} --write"
+    "format": "prettier **/*.{ts,tsx,scss} --write",
+    "create-env": "printenv > .env"
   },
   "dependencies": {
     "classnames": "^2.3.1",

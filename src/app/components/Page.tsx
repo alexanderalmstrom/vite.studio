@@ -10,12 +10,12 @@ import NotFound from './NotFound';
 type Props = {
   page?: ContentfulPage;
   fetchPage?: Function;
-  loading: Boolean;
-  error: Boolean;
+  loading?: Boolean;
+  error?: Boolean;
 };
 
 type State = {
-  page?: ContentfulPage;
+  page: ContentfulPage;
   loading: Boolean;
   error: Boolean;
 };

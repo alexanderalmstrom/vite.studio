@@ -2,21 +2,16 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import viteCompression from 'vite-plugin-compression';
 
+const viteEnv = {};
+
+Object.keys(process.env).forEach((key) => {
+  if (key.startsWith(`VITE_`)) {
+    viteEnv[`import.meta.env.${key}`] = process.env[key];
+  }
+});
+
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react(), viteCompression()],
-  define: {
-    // 'process.env.CONTENTFUL_SPACE_ID': JSON.stringify(
-    //   process.env.CONTENTFUL_SPACE_ID
-    // ),
-    // 'process.env.CONTENTFUL_ACCESS_TOKEN': JSON.stringify(
-    //   process.env.CONTENTFUL_ACCESS_TOKEN
-    // ),
-    // 'process.env.VITE_CONTENTFUL_SPACE_ID': JSON.stringify(
-    //   process.env.VITE_CONTENTFUL_SPACE_ID
-    // ),
-    // 'process.env.VITE_CONTENTFUL_ACCESS_TOKEN': JSON.stringify(
-    //   process.env.VITE_CONTENTFUL_ACCESS_TOKEN
-    // ),
-  },
+  define: viteEnv,
 });

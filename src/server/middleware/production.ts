@@ -1,3 +1,4 @@
+import dotenv from 'dotenv';
 import fs from 'fs';
 import path from 'path';
 import express from 'express';
@@ -6,6 +7,8 @@ import serveStatic from 'serve-static';
 import { replaceHtml } from '../utils/replaceHtml';
 
 export async function productionMiddleware(application: express.Application) {
+  dotenv.config();
+
   application.use(compression());
 
   application.use(

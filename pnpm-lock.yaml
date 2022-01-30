@@ -13,7 +13,6 @@ specifiers:
   compression: ^1.7.4
   concurrently: ^7.0.0
   contentful: ^9.1.6
-  dotenv: ^14.3.2
   express: ^4.17.2
   nodemon: ^2.0.15
   npm-run-all: ^4.1.5
@@ -41,7 +40,6 @@ dependencies:
   classnames: 2.3.1
   compression: 1.7.4
   contentful: 9.1.6
-  dotenv: 14.3.2
   express: 4.17.2
   npm-run-all: 4.1.5
   react: 17.0.2
@@ -654,7 +652,7 @@ packages:
       postcss: ^8.1.0
     dependencies:
       browserslist: 4.19.1
-      caniuse-lite: 1.0.30001303
+      caniuse-lite: 1.0.30001304
       fraction.js: 4.1.2
       normalize-range: 0.1.2
       picocolors: 1.0.0
@@ -723,7 +721,7 @@ packages:
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
-      caniuse-lite: 1.0.30001303
+      caniuse-lite: 1.0.30001304
       electron-to-chromium: 1.4.57
       escalade: 3.1.1
       node-releases: 2.0.1
@@ -778,8 +776,8 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  /caniuse-lite/1.0.30001303:
-    resolution: {integrity: sha512-/Mqc1oESndUNszJP0kx0UaQU9kEv9nNtJ7Kn8AdA0mNnH8eR1cj0kG+NbNuC1Wq/b21eA8prhKRA3bbkjONegQ==}
+  /caniuse-lite/1.0.30001304:
+    resolution: {integrity: sha512-bdsfZd6K6ap87AGqSHJP/s1V+U6Z5lyrcbBu3ovbCCf8cSYpwTtGrCBObMpJqwxfTbLW6YTIdbb1jEeTelcpYQ==}
     dev: true
 
   /chalk/2.4.2:
@@ -1098,11 +1096,6 @@ packages:
     dependencies:
       is-obj: 2.0.0
     dev: true
-
-  /dotenv/14.3.2:
-    resolution: {integrity: sha512-vwEppIphpFdvaMCaHfCEv9IgwcxMljMw2TnAQBB4VWPvzXQLTb82jwmdOKzlEVUL3gNFT4l4TPKO+Bn+sqcrVQ==}
-    engines: {node: '>=12'}
-    dev: false
 
   /duplexer3/0.1.4:
     resolution: {integrity: sha1-7gHdHKwO08vH/b6jfcCo8c4ALOI=}

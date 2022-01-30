@@ -18,6 +18,8 @@ export const fetchPages: Function = () => async (dispatch: Function) => {
 
 export const fetchPage: Function =
   (slug: string) => async (dispatch: Function) => {
+    dispatch({ type: 'FETCH_PAGE_LOADING' });
+
     try {
       const payload = await contentfulClient.getEntries<
         ContentfulCollection<ContentfulPage>
@@ -26,8 +28,14 @@ export const fetchPage: Function =
         'fields.slug': slug,
       });
 
-      dispatch({ type: 'FETCH_PAGE', payload });
+      if (payload.items.length) {
+        dispatch({ type: 'FETCH_PAGE_SUCCESS', payload });
+      } else {
+        dispatch({ type: 'FETCH_PAGE_NOT_FOUND' });
+      }
     } catch (err) {
       console.error(err);
+
+      dispatch({ type: 'FETCH_PAGE_ERROR', err });
     }
   };

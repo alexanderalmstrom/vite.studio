@@ -1,9 +1,9 @@
 import Layout from './Layout';
 
-export default function NotFound() {
+export default function Loading() {
   return (
     <Layout className="h-screen flex flex-col justify-center items-center">
-      <h1>Page not found</h1>
+      <p>Loading...</p>
     </Layout>
   );
 }

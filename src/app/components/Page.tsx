@@ -1,10 +1,9 @@
+import { useEffect } from 'react';
+import { Link, useParams } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import { ContentfulPage } from '../types';
 import { fetchPage } from '../actions';
 import Layout from './Layout';
-import { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
 import NotFound from './NotFound';
 
 type Props = {

@@ -1,9 +1,9 @@
-import { ContentfulCollection } from 'contentful';
 import { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { fetchPages } from '../actions';
+import { ContentfulCollection } from 'contentful';
 import { ContentfulPage } from '../types';
+import { fetchPages } from '../actions';
 import Layout from './Layout';
 
 type Props = {

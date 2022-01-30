@@ -18,6 +18,7 @@ export function page(state = initialState, action: Action) {
       return {
         ...state,
         loading: true,
+        error: false,
       };
     case 'FETCH_PAGE_SUCCESS':
       return {

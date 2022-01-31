@@ -4,12 +4,15 @@ import { ContentfulPage } from '../types';
 type Action = {
   payload: ContentfulCollection<ContentfulPage>;
   type: string;
+  error: Boolean;
+  message: Error;
 };
 
 const initialState = {
   page: {},
   loading: false,
   error: false,
+  message: {},
 };
 
 export function page(state = initialState, action: Action) {
@@ -38,6 +41,7 @@ export function page(state = initialState, action: Action) {
         ...state,
         loading: false,
         error: true,
+        message: action.error,
       };
     default:
       return state;

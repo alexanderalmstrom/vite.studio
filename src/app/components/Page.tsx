@@ -12,15 +12,17 @@ type Props = {
   fetchPage?: Function;
   loading?: Boolean;
   error?: Boolean;
+  message?: Error;
 };
 
 type State = {
   page: ContentfulPage;
   loading: Boolean;
   error: Boolean;
+  message: Error;
 };
 
-function Page({ fetchPage, page, loading, error }: Props) {
+function Page({ fetchPage, page, loading, error, message }: Props) {
   const { slug } = useParams();
 
   useEffect(() => {
@@ -29,7 +31,7 @@ function Page({ fetchPage, page, loading, error }: Props) {
 
   if (loading) return <Loading />;
 
-  if (error) return <NotFound />;
+  if (error) return <NotFound error={message} />;
 
   if (!page?.fields) return null;
 

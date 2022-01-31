@@ -33,9 +33,13 @@ export const fetchPage: Function =
       } else {
         dispatch({ type: 'FETCH_PAGE_NOT_FOUND' });
       }
-    } catch (err) {
-      console.error(err);
+    } catch (error) {
+      dispatch({ type: 'FETCH_PAGE_ERROR', error });
 
-      dispatch({ type: 'FETCH_PAGE_ERROR', err });
+      if (error instanceof Error) {
+        console.error(error);
+      } else {
+        throw error;
+      }
     }
   };

@@ -4,15 +4,13 @@ import { ContentfulPage } from '../types';
 type Action = {
   payload: ContentfulCollection<ContentfulPage>;
   type: string;
-  error: Boolean;
-  message: Error;
+  error: Error;
 };
 
 const initialState = {
   page: {},
   loading: false,
-  error: false,
-  message: {},
+  error: null,
 };
 
 export function page(state = initialState, action: Action) {
@@ -21,27 +19,29 @@ export function page(state = initialState, action: Action) {
       return {
         ...state,
         loading: true,
-        error: false,
+        error: null,
       };
     case 'FETCH_PAGE_SUCCESS':
       return {
         ...state,
         page: action.payload.items[0],
         loading: false,
-        error: false,
+        error: null,
       };
     case 'FETCH_PAGE_NOT_FOUND':
       return {
         ...state,
         loading: false,
-        error: true,
+        error: {
+          name: '404',
+          message: 'Page not found',
+        },
       };
     case 'FETCH_PAGE_ERROR':
       return {
         ...state,
         loading: false,
-        error: true,
-        message: action.error,
+        error: action.error,
       };
     default:
       return state;
